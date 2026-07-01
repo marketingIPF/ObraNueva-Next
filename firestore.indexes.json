@@ -1,4 +1,13 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "viviendas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "planta", "order": "ASCENDING" },
+        { "fieldPath": "numero", "order": "ASCENDING" }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

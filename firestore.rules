@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// Security model for this project:
+//  - The public site reads promotions and units directly (no login needed:
+//    this is public marketing/availability information, nothing sensitive).
+//  - ALL writes go through Server Actions using the Firebase Admin SDK,
+//    which runs on the server and ignores these rules entirely. The admin
+//    panel never writes to Firestore straight from the browser.
+//  - So client-side writes are denied outright here. Authentication and
+//    authorization for who's allowed to change a vivienda's status is
+//    enforced inside the Server Action itself (it verifies the Firebase ID
+//    token before writing) — see lib/actions/viviendas.js.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /promociones/{promoId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /viviendas/{viviendaId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+  }
+}

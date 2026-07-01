@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Base */
+  --color-paper: #faf8f4;
+  --color-paper-soft: #f1ede4;
+  --color-card: #ffffff;
+  --color-ink: #15130f;
+  --color-ink-soft: #55503f;
+  --color-stone: #948c7a;
+  --color-line: rgba(21, 19, 15, 0.08);
+
+  /* Brand (RK Palanca Fontestad) */
+  --color-brand: #cf731b;
+  --color-brand-dark: #a85c14;
+  --color-brand-tint: #fdf0e2;
+
+  /* Semantic status (disponibilidad de vivienda) */
+  --color-status-available: #1f8a5f;
+  --color-status-available-bg: #e7f5ee;
+  --color-status-reserved: #b8790f;
+  --color-status-reserved-bg: #faf1de;
+  --color-status-sold: #8a8474;
+  --color-status-sold-bg: #edebe4;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-soft: var(--color-paper-soft);
+  --color-card: var(--color-card);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-stone: var(--color-stone);
+  --color-line: var(--color-line);
+  --color-brand: var(--color-brand);
+  --color-brand-dark: var(--color-brand-dark);
+  --color-brand-tint: var(--color-brand-tint);
+  --color-status-available: var(--color-status-available);
+  --color-status-available-bg: var(--color-status-available-bg);
+  --color-status-reserved: var(--color-status-reserved);
+  --color-status-reserved-bg: var(--color-status-reserved-bg);
+  --color-status-sold: var(--color-status-sold);
+  --color-status-sold-bg: var(--color-status-sold-bg);
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: white;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reveal-on-scroll primitive */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-1 { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+.rise-2 { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
+.rise-3 { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.31s both; }
+.rise-4 { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) 0.44s both; }
